@@ -60,7 +60,7 @@ eq = $(if $(or $(1),$(2)),$(and $(findstring $(1),$(2)),\
 no-cache-arg = $(if $(call eq, $(no-cache), yes), --no-cache, $(empty))
 
 image:
-	docker build $(no-cache-arg) -t $(IMAGE_NAME):$(VERSION) docker-image/$(DOCKERFILE)
+	docker build $(no-cache-arg) --build-arg BASE_IMAGE=$(BASE_IMAGE) -t $(IMAGE_NAME):$(VERSION) docker-image/$(DOCKERFILE)
 
 # Tag Docker image with given tags.
 #
